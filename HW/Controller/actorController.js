@@ -1,17 +1,14 @@
-const Movie = require('../Model/movieModel');
+const Actor = require('../Model/actorModel');
 
-exports.addNewMovie = async (req, res) => {
+exports.addNewActor = async (req, res) => {
   try {
     console.log(req.body);
-    const newMovie = await Movie.create(req.body);
+    const newActor = await Actor.create(req.body);
     res.status(201).json({
       status: 'success',
-      //   data: {
-      //     movie: newMovie,
-      //   },
     });
   } catch (error) {
-    console.error('Error adding new movie:', error.message);
+    console.error('Error adding new Actor:', error.message);
     res.status(400).json({
       status: 'fail',
       message: error.message,
@@ -19,13 +16,13 @@ exports.addNewMovie = async (req, res) => {
   }
 };
 
-exports.getMovies = async (req, res) => {
+exports.getActors = async (req, res) => {
   try {
     console.log(req.params);
-    const movies = await Movie.find();
+    const actors = await Actor.find();
     res.status(200).json({
       status: 'success',
-      data: { movies: movies },
+      data: { actors: actors },
     });
   } catch (error) {
     res.status(400).json({

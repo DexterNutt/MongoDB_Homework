@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const app = express();
 // const database = require('./database/database');
 const movieController = require('./Controller/movieController');
-
+const actorController = require('./Controller/actorController');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -22,6 +22,8 @@ connectToDatabase();
 
 app.get('/api/v1/movies', movieController.getMovies);
 app.post('/api/v1/movies', movieController.addNewMovie);
+app.get('/api/v1/actors', actorController.getActors);
+app.post('/api/v1/actors', actorController.addNewActor);
 
 const port = 10000;
 
