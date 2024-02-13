@@ -16,6 +16,7 @@ database.connectToDatabase();
 app.get('/api/v1/actors', actorController.getActors);
 app.post('/api/v1/actors', actorController.addNewActor);
 app.get('/actors', actorController.renderActors);
+app.get('/actors/:id', actorController.renderActor);
 
 //*Movies Route
 app.get('/api/v1/movies', movieController.getMovies);

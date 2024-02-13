@@ -26,7 +26,7 @@ exports.getActors = async (req, res) => {
     });
   } catch (error) {
     res.status(400).json({
-      status: 'fail',
+      status: 'unexpected failure',
       message: error.message,
     });
   }
@@ -40,8 +40,20 @@ exports.renderActors = async (req, res) => {
       actors: actors,
     });
   } catch (error) {
-    return res.status(500).json({
-      status: 'error',
+    return res.status(400).json({
+      status: 'unexpected failure',
+      message: error.message,
+    });
+  }
+};
+
+exports.renderActor = async (req, res) => {
+  try {
+    const actor = await Actor.findById(req.params.id);
+    res.render('actor', { actor });
+  } catch (error) {
+    res.status(400).json({
+      status: 'unexpected failure',
       message: error.message,
     });
   }

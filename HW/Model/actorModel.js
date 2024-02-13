@@ -13,6 +13,9 @@ const ActorSchema = new mongoose.Schema({
     type: Number,
     // default: 0,
   },
+  movies: {
+    type: String,
+  },
 });
 
 const Actor = mongoose.model('Actor', ActorSchema);
