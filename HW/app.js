@@ -8,13 +8,20 @@ const bookController = require('./Controller/bookController');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.set('view engine', 'ejs');
 
 database.connectToDatabase();
 
-app.get('/api/v1/movies', movieController.getMovies);
-app.post('/api/v1/movies', movieController.addNewMovie);
+//*Actors Route
 app.get('/api/v1/actors', actorController.getActors);
 app.post('/api/v1/actors', actorController.addNewActor);
+app.get('/actors', actorController.renderActors);
+
+//*Movies Route
+app.get('/api/v1/movies', movieController.getMovies);
+app.post('/api/v1/movies', movieController.addNewMovie);
+
+//*Books route
 app.get('/api/v1/books', bookController.getBooks);
 app.post('/api/v1/books', bookController.addNewBook);
 

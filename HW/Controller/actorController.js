@@ -31,3 +31,18 @@ exports.getActors = async (req, res) => {
     });
   }
 };
+
+exports.renderActors = async (req, res) => {
+  try {
+    const actors = await Actor.find();
+    res.render('actors', {
+      title: 'All actors',
+      actors: actors,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: 'error',
+      message: error.message,
+    });
+  }
+};
