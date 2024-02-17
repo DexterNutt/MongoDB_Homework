@@ -28,6 +28,6 @@ const advertisementSchema = new mongoose.Schema({
   },
 });
 
-const Advertisement = mongoose.Model('Advertisement', advertisementSchema);
+const Advert = mongoose.model('Advertisement', advertisementSchema);
 
-module.exports = Advertisement;
+module.exports = Advert;
