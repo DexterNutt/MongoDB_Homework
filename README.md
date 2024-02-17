@@ -1,1 +1,1 @@
-Mongo DB and general API homeworks repo
+Mongo DB and Express homeworks repo
