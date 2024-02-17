@@ -1,9 +1,6 @@
 const Advert = require('./advertisementSchema');
 
-const id = req.params.id;
-const title = req.params.title;
-
-exports.createAdvert = async (res, req) => {
+exports.createAdvert = async (req, res) => {
   try {
     const newAdvert = await Advert.create(req.body);
     res.status(201).json({
@@ -39,6 +36,8 @@ exports.getAllAdverts = async (req, res) => {
 
 exports.getAdvert = async (req, res) => {
   try {
+    const id = req.params.id;
+    // const title = req.params.title;
     const advert = await Advert.findById(id);
 
     res.status(200).json({
@@ -57,7 +56,11 @@ exports.getAdvert = async (req, res) => {
 
 exports.deleteAdvert = async (req, res) => {
   try {
+    const id = req.params.id;
     await Advert.findByIdAndDelete(id);
+    res.status(201).json({
+      status: 'success',
+    });
   } catch (error) {
     res.status(400).json({
       status: 'error',
@@ -68,6 +71,7 @@ exports.deleteAdvert = async (req, res) => {
 
 exports.updateAdvert = async (req, res) => {
   try {
+    const id = req.params.id;
     const advert = await Advert.findByIdAndUpdate(id, req.body, {
       new: true,
       runValidators: true,

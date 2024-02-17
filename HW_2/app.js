@@ -16,10 +16,33 @@ app.post('/api/v1/signup', auth.signUp);
 app.post('/api/v1/login', auth.login);
 
 app.get('/advertisements', adverts.getAllAdverts);
-app.get('/advertisement', adverts.getOne);
+app.get('/advertisement/:id', adverts.getAdvert);
 app.post('/api/v1/advertisements', adverts.createAdvert);
-app.delete('/api/v1/advertisements', adverts.deleteAdvert);
-app.patch('/api/v1/advertisements', adverts.updateAdvert);
+app.get('/api/v1/advertisements/delete/:id', adverts.deleteAdvert);
+app.patch('/api/v1/advertisements/update/:id', adverts.updateAdvert);
+
+app.use(
+  jwt
+    .expressjwt({
+      algorithms: ['HS256'],
+      secret: process.env.JWT_SECRET,
+      getToken: req => {
+        if (
+          req.headers.authorization &&
+          req.headers.authorization.split(' ')[0] === 'Bearer'
+        ) {
+          return req.header.authorization.split(' ')[1];
+        }
+        if (req.cookies.jwt) {
+          return req.cookies.jwt;
+        }
+        return null;
+      },
+    })
+    .unless({
+      path: ['/api/v1/signup', '/api/v1/login'],
+    })
+);
 
 app.listen(process.env.PORT, error => {
   if (error) console.log('Could not initiate server');
