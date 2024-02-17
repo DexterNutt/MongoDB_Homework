@@ -3,9 +3,7 @@ const db = 'MongoDB_Homework';
 
 exports.connectToDatabase = async () => {
   try {
-    await mongoose.connect(
-      `mongodb+srv://dexternutt:IQmZkcUJTJMZ56Cm@cluster0.phtr5jb.mongodb.net/${db}?retryWrites=true&w=majority`
-    );
+    await mongoose.connect(`ulr goes here`);
     console.log('Connected to database!');
   } catch (err) {
     console.log(err);
