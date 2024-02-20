@@ -37,6 +37,7 @@ app.use(
 
 app.post('/api/v1/signup', auth.signUp);
 app.post('/api/v1/login', auth.login);
+
 app.get('/advertisements', adverts.getAllAdverts);
 app.get('/advertisement/:id', adverts.getAdvert);
 app.post('/api/v1/advertisements', adverts.createAdvert);
