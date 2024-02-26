@@ -1,31 +1,45 @@
 body {
+  font-family: Arial, sans-serif;
   display: flex;
-  justify-content: center; /* horizontally center */
-  align-items: center; /* vertically center */
-  height: 100vh; /* full height of the viewport */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   margin: 0;
-  background-color: #f0f0f0; /* optional: set a background color */
+  padding: 0;
+  background-image: url(/img/what-the-hex-dark.png);
 }
 
 .post-container {
-  max-width: 600px; /* optional: set a maximum width for the posts */
-  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
   padding: 20px;
+  border-radius: 5px;
+  max-height: calc(100vh - 40px);
 }
 
 .post {
-  margin-bottom: 20px; /* optional: add space between posts */
-  background-color: #fff; /* optional: set a background color for posts */
+  margin-bottom: 20px;
+  background-color: #fff;
   padding: 10px;
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* optional: add a shadow */
+  box-shadow: 0 3px 4px rgba(189, 131, 6, 0.5);
 }
 
 .post-title {
   font-size: 24px;
+  margin-top: 0;
   margin-bottom: 10px;
 }
 
 .post-content {
   line-height: 1.6;
+}
+
+.post a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.post a:hover {
+  text-decoration: underline;
 }
