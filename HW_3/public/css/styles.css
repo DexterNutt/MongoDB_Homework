@@ -1,0 +1,31 @@
+body {
+  display: flex;
+  justify-content: center; /* horizontally center */
+  align-items: center; /* vertically center */
+  height: 100vh; /* full height of the viewport */
+  margin: 0;
+  background-color: #f0f0f0; /* optional: set a background color */
+}
+
+.post-container {
+  max-width: 600px; /* optional: set a maximum width for the posts */
+  width: 100%;
+  padding: 20px;
+}
+
+.post {
+  margin-bottom: 20px; /* optional: add space between posts */
+  background-color: #fff; /* optional: set a background color for posts */
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* optional: add a shadow */
+}
+
+.post-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.post-content {
+  line-height: 1.6;
+}

@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { DateTime } = require('luxon');
 
 const postSchema = new mongoose.Schema({
   title: {

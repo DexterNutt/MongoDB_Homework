@@ -4,15 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/styles.css" />
-    <title>Login</title>
+    <title>Sign Up</title>
   </head>
   <body>
     <form class="form">
+      <label for="username">username</label>
+      <input type="username" id="username" name="username" required />
       <label for="email">email</label>
       <input type="email" id="email" name="email" required />
       <label for="password">password</label>
       <input type="password" id="password" name="password" required />
-      <button type="submit">Log in</button>
+      <button type="submit">Sign Up</button>
     </form>
 
     <script
@@ -21,6 +23,6 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <script type="text/javascript" src="/js/login.js"></script>
+    <script type="text/javascript" src="/js/signup.js"></script>
   </body>
 </html>

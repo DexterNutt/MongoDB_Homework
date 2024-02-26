@@ -6,7 +6,6 @@ const { promisify } = require('util');
 exports.signUp = async (req, res) => {
   try {
     const newUser = await User.create({
-      //! SECURITY TO PROTECT AGAINST INSERTING ROLE
       username: req.body.username,
       email: req.body.email,
       password: req.body.password,

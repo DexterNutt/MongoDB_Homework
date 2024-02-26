@@ -61,8 +61,11 @@ app.post('/me', post.createByUser);
 app.get('/me', post.getByUser);
 
 app.get('/login', viewHandler.getLoginForm);
+app.get('/signup', viewHandler.getSignupForm);
 app.get('/posts', viewHandler.postsView);
 app.get('/posts/:id', viewHandler.singlePostView);
+app.get('/newPost', viewHandler.createPostView);
+app.post('/newPost', viewHandler.createPost);
 
 app.listen(process.env.PORT, error => {
   if (error) console.log('Could not initiate server');

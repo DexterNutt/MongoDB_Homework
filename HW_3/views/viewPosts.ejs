@@ -3,20 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Posts</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Poster</title>
   </head>
   <body>
-    <% if (posts.length === 0) { %>
-    <p>No posts found!</p>
-
-    <% } else {%> <% posts.forEach(post =>{%>
-    <div class="post">
-      <a href="/posts/<%=post._id%>">
-        <h2 class="post-title"><%= post.title %></h2></a
-      >
-      <p><%= post.post %></p>
-      <p><%= post.date %></p>
+    <div class="post-container">
+      <% if (posts.length === 0) { %>
+      <p>No posts found!</p>
+      <% } else { %> <% posts.forEach(post => { %>
+      <div class="post">
+        <a href="/posts/<%= post._id %>">
+          <h2 class="post-title"><%= post.title %></h2>
+        </a>
+        <p><%= post.post %></p>
+        <p><%= post.date %></p>
+      </div>
+      <% }); %> <% } %>
     </div>
-    <%}); %> <% } %>
   </body>
 </html>
