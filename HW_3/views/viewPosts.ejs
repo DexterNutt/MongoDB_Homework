@@ -8,13 +8,15 @@
   <body>
     <% if (posts.length === 0) { %>
     <p>No posts found!</p>
-    <% } posts.forEach(el) => %>
-    <div>
-      <p><%=element.title %></p>
-      <p><%=element.post %></p>
-      <a href="/viewPosts/:id"></a>
-    </div>
 
-    %>
+    <% } else {%> <% posts.forEach(post =>{%>
+    <div class="post">
+      <a href="/viewPosts/<%=post._id%>">
+        <h2 class="post-title"><%= post.title %></h2></a
+      >
+      <p><%= post.post %></p>
+      <p><%= post.date %></p>
+    </div>
+    <%}); %> <% } %>
   </body>
 </html>

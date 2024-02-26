@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
-// CONFIG SE STAVA VO PROCESS.ENV
 dotenv.config({ path: `${__dirname}/../../config.env` });
 
 const databaseURL = process.env.DATABASE.replace(

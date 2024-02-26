@@ -104,12 +104,3 @@ exports.login = async (req, res) => {
     });
   }
 };
-
-// exports.restrict = (...roles) => {
-//   return (req, res, next) => {
-//     if (!roles.includes(req.auth.role)) {
-//       return res.status(500).send('You do not have access!');
-//     }
-//     next();
-//   };
-// };
