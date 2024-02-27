@@ -9,7 +9,7 @@ const newPost = async (title, post) => {
       },
     });
     const newPost = res.data;
-    console.log(newPost);
+    // console.log(newPost);
     window.location.href = `/posts/${newPost._id}`;
   } catch (error) {
     console.error('Error creating post:', error);
