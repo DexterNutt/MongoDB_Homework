@@ -57,6 +57,7 @@ app.get('/post/:id', post.getOne);
 app.post('/post', post.create);
 app.patch('/post/:id', post.update);
 app.delete('/post/:id', post.delete);
+app.put('/post/:id', post.replace);
 
 app.post('/me', post.createByUser);
 app.get('/me', post.getByUser);

@@ -2,7 +2,18 @@ const Post = require('../pkg/posts/postSchema');
 
 exports.getAll = async (req, res) => {
   try {
-    let posts = await Post.find();
+    // How to search from route
+    // Step 1: copy the object req.query
+    const queryObj = { ...req.query };
+    let queryString = JSON.stringify(queryObj);
+
+    queryString = queryString.replace(
+      /\b(gte|gt|lte|lt)\b/g,
+      match => `$${match}`
+    );
+    const query = JSON.parse(queryString);
+
+    let posts = await Post.find(query);
     res.status(200).json({
       status: 'success',
       data: {
@@ -39,6 +50,27 @@ exports.update = async (req, res) => {
     const post = await Post.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,
+    });
+    res.status(200).json({
+      status: 'success',
+      data: {
+        post,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
+};
+
+exports.replace = async (req, res) => {
+  try {
+    const post = await Post.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+      overwrite: true,
     });
     res.status(200).json({
       status: 'success',
@@ -109,3 +141,18 @@ exports.getByUser = async (req, res, next) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+// const averageYear = async (req, res) => {
+//   try {
+//     const result = await Movie.aggregate([
+//       {
+//         $group: {
+//           _id: null,
+//           averageYear: { $avg: '$year' },
+//         },
+//       },
+//     ]);
+//   } catch (error) {
+//     res.status(500).json({ error: error.message });
+//   }
+// };
