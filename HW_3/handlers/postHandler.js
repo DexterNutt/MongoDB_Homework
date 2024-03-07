@@ -1,4 +1,5 @@
 const Post = require('../pkg/posts/postSchema');
+const mail = require('./emailHandler');
 
 exports.getAll = async (req, res) => {
   try {

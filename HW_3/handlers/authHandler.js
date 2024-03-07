@@ -2,6 +2,7 @@ const User = require('../pkg/users/userSchema');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { promisify } = require('util');
+const mail = require('./emailHandler');
 
 exports.signUp = async (req, res) => {
   try {
@@ -30,6 +31,14 @@ exports.signUp = async (req, res) => {
       ),
       secure: false,
       httpOnly: true,
+    });
+
+    const message = 'Welcome to our app!';
+
+    await mail.sendMail({
+      email: newUser.email,
+      subject: 'Welcome from the Poster team',
+      message: message,
     });
 
     res.status(201).json({
@@ -90,6 +99,7 @@ exports.login = async (req, res) => {
       secure: false,
       httpOnly: true,
     });
+    // Send email with message
 
     // Send final response with status and token
     res.status(201).json({
