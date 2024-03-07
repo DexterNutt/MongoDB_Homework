@@ -15,6 +15,7 @@ const postSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now,
+    // leave it Date.now IRL
     get: function (date) {
       return date
         ? date.toLocaleDateString('en-gb', {
