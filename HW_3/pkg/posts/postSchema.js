@@ -15,6 +15,16 @@ const postSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now,
+    get: function (date) {
+      return date
+        ? date.toLocaleDateString('en-gb', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            timeZone: 'utc',
+          })
+        : null;
+    },
   },
   img: {
     type: String,

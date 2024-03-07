@@ -1,5 +1,34 @@
 const Post = require('../pkg/posts/postSchema');
 const mail = require('./emailHandler');
+const multer = require('multer');
+const uuid = require('uuid');
+
+const imageID = uuid.v4();
+
+const multerStorage = multer.diskStorage({
+  destination: (req, file, callback) => {
+    callback(null, 'public/img/profiles');
+  },
+  filename: (req, file, callback) => {
+    callback(null, 'images.jpg');
+  },
+});
+
+const multerFilter = (req, file, callback) => {
+  if (file.mimetype.startsWith('image')) {
+    callback(null, true);
+  } else {
+    callback(new Error('This file type is not supported'), false);
+  }
+};
+
+const upload = multer({
+  storage: multerStorage,
+  fileFilter: multerFilter,
+});
+
+exports.uploadImage = upload.single('picture'); // req.file
+exports.uploadMultipleImages = upload.array('pictures', 3); // req.files
 
 exports.getAll = async (req, res) => {
   try {
